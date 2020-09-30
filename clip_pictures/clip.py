@@ -37,9 +37,15 @@ def clip_img(src_path, out_path, src_file_name):
         sys.exit()
 
     clipped_img = img[CLIP_BEGIN_Y : CLIP_END_Y, CLIP_BEGIN_X : CLIP_END_X]
-    cv2.imwrite(out_path + src_file_name, clipped_img)
+    cv2.imwrite(out_path + to_jpg(src_file_name), clipped_img)
 
     return
+
+def to_jpg(file_name):
+    array = file_name.split('.')
+    array[-1] = 'jpg'
+
+    return '.'.join(array)
 
 if __name__ == '__main__':
     # check argments
